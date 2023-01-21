@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block Contactactive %} active{% endblock Contactactive %}
+
+{% block title %}Contact{% endblock title %}
+{% block body %}
+
+
+</nav>
+<div class="container">
+  <h2 class="text-center">Contact me for enquiry</h2>
+</div>
+<br>
+<form action="/contact" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col">
+      <strong> Name</strong><input type="text" class="form-control" id="name" name="name" placeholder="your name"
+        aria-label="First name">
+    </div>
+   <br>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label"><strong>Email</strong> </label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+    </div>
+    <br>
+
+    <div class="col-md-6">
+      <label for="phone" class="form-label"><strong>Phone number </strong> </label>
+      <input type="phone" class="form-control" id="phone" name="phone" placeholder="Your number">
+    </div>
+    <br>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+</body>
+
+</html>
+
+{% endblock body %}
